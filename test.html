@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Gallery</title>
+    <link rel="stylesheet" href=".css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fff5f7;
+        }
+
+        .thank-you {
+            font-family: 'Dancing Script', cursive;
+            font-size: 60px; /* Adjusted for mobile */
+            text-align: center;
+            margin-top: 10px;
+            color: #ff4d6d;
+        }
+
+        /* Responsive Avatar Section */
+        .avatars {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .avatar {
+            width: 100px; /* Adjusted for mobile */
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .heart {
+            font-size: 30px;
+            color: red;
+        }
+
+        /* Responsive Cute Images */
+        .cute-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .cute-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Responsive Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .photo {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Large Image Section */
+        .gallery1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .bigphoto {
+            width: 90%;
+            max-width: 600px; /* Prevents it from being too large */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Media Queries for Smaller Screens */
+        @media (max-width: 768px) {
+            .thank-you {
+                font-size: 40px;
+            }
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .heart {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .thank-you {
+                font-size: 30px;
+            }
+            .avatar {
+                width: 70px;
+                height: 70px;
+            }
+            .heart {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="thank-you">This Is A Memories Placeholder</h1>
+    
+    <div class="avatars">
+        <img src="png/E8BA03F7-143C-4F9A-ACA7-59A81C57DB77.JPG" alt="Avatar 1" class="avatar">
+        <div class="heart">&#10084;</div>
+        <img src="png/IMG_3769.JPG" alt="Avatar 2" class="avatar">
+    </div>
+
+    <main>
+        <section class="cute-images">
+            <img src="https://i.pinimg.com/736x/97/42/b5/9742b5e736e57612e3630da338fe4ae7.jpg" alt="Cute Image 1" class="cute-image">
+            <img src="https://i.pinimg.com/736x/97/42/b5/9742b5e736e57612e3630da338fe4ae7.jpg" alt="Cute Image 2" class="cute-image">
+            <img src="https://i.pinimg.com/736x/97/42/b5/9742b5e736e57612e3630da338fe4ae7.jpg" alt="Cute Image 3" class="cute-image">
+            <img src="https://i.pinimg.com/736x/97/42/b5/9742b5e736e57612e3630da338fe4ae7.jpg" alt="Cute Image 4" class="cute-image">
+            <img src="https://i.pinimg.com/736x/97/42/b5/9742b5e736e57612e3630da338fe4ae7.jpg" alt="Cute Image 5" class="cute-image">
+        </section>
+
+        <h2 class="thank-you">MEMORIES</h2>
+
+        <section class="gallery">
+            <img src="png/fun_image-1738718957.png" alt="Memory 1" class="photo">
+            <img src="png/fun_image-1738718777.png" alt="Memory 2" class="photo">
+            <img src="png/IMG_9243.JPG" alt="Memory 3" class="photo">
+            <img src="png/IMG_9242.JPG" alt="Memory 4" class="photo">
+            <img src="png/IMG_0793.JPG" alt="Memory 5" class="photo">
+        </section>
+
+        <section class="gallery1">
+            <img src="png/IMG_0792.JPG" alt="Memory 6" class="bigphoto">
+        </section>
+    </main>
+</body>
+</html>

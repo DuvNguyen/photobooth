@@ -1,0 +1,132 @@
+* {
+    margin-left: 0%;
+}
+
+header {
+    background-image: url('png/PinkGridBackGround.jpg'); /* Replace with your actual file path */
+    background-size: cover; /* Makes the image cover the entire header */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    height: 130px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Improves text readability */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    background-image: url("png/backgorund_2.jpg");
+}
+
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.avatars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 60px auto;
+
+    background: url('png/back_ground_for_avt.jpg') no-repeat center;
+    background-size: cover; /* Hoặc contain */
+    height: 300px;
+    width: 96%; /* Đảm bảo full chiều rộng */
+    
+    border: 6px solid #ffa2b3; /* Viền màu hồng đậm */
+    border-radius: 15px; /* Bo góc viền */
+}
+
+
+.avatar {
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: lightgray; /* Helps visualize if no image is set */
+    margin-top: 20px;
+    
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa avatar và tên */
+}
+
+.name {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ff4d6d; /* Màu hồng lãng mạn */
+    font-family: 'Dancing Script'; /* Font chữ đẹp */
+    margin-top: 5px; /* Tạo khoảng cách giữa avatar và tên */
+}
+
+
+.heart {
+    font-size: 60px;
+    color: #ffffff;
+    margin: 0 60px; /* Adds spacing between the heart and avatars */
+    position: relative;
+    top: -40px; /* Dịch lên trên 20px */
+}
+
+
+.cute-images {
+    align-items: center;
+    margin: 160px 0;
+}
+
+.cute-image {
+    width: 80px; /* Adjust based on your preferred size */
+    height: 80px; /* Keeps it square */
+    object-fit: cover; /* Ensures the image fills the space */
+    margin-bottom: 60px;
+    margin-right: 20px;
+}
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    margin-top: 3rem;
+}
+
+.photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/*for the bigger photobooth album*/
+.gallery1 {
+    display: flex;
+    display: grid;
+    gap: 150px;
+    margin-left: 1%;
+}
+
+/*Photos in gallery1*/
+.bigphoto {
+    width: 43%; /* Fit inside the frame */
+    height: auto;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+
+
