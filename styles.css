@@ -19,8 +19,10 @@ header {
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 0;
+    margin: 0 auto;
     background-image: url("png/backgorund_2.jpg");
+    max-width: 414px;
+    padding: 10px;
 }
 
 
@@ -35,27 +37,26 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 60px auto;
-
+    flex-wrap: wrap; /* Để khi màn hình nhỏ, avatar xuống dòng */
     background: url('png/back_ground_for_avt.jpg') no-repeat center;
-    background-size: cover; /* Hoặc contain */
-    height: 300px;
-    width: 96%; /* Đảm bảo full chiều rộng */
-    
-    border: 6px solid #ffa2b3; /* Viền màu hồng đậm */
-    border-radius: 15px; /* Bo góc viền */
+    background-size: cover;
+    height: auto; /* Để nó co dãn theo nội dung */
+    max-width: 100%; /* Không vượt quá màn hình */
+    padding: 20px; /* Tạo khoảng cách đẹp hơn */
+    border: 6px solid #ffa2b3;
+    border-radius: 15px;
 }
 
 
+
 .avatar {
-    width: 200px; /* Adjust size as needed */
-    height: 200px;
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     background-color: lightgray; /* Helps visualize if no image is set */
     margin-top: 20px;
+    
     
 }
 
@@ -66,7 +67,7 @@ header {
 }
 
 .name {
-    font-size: 60px;
+    font-size: 20px;
     font-weight: bold;
     color: #ff4d6d; /* Màu hồng lãng mạn */
     font-family: 'Dancing Script'; /* Font chữ đẹp */
@@ -75,11 +76,11 @@ header {
 
 
 .heart {
-    font-size: 60px;
+    font-size: 300%;
     color: #ffffff;
-    margin: 0 60px; /* Adds spacing between the heart and avatars */
+    margin: 0 40px; /* Adds spacing between the heart and avatars */
     position: relative;
-    top: -40px; /* Dịch lên trên 20px */
+    top: -15px; /* Dịch lên trên 20px */
 }
 
 
@@ -122,8 +123,8 @@ header {
 
 /*Photos in gallery1*/
 .bigphoto {
-    width: 43%; /* Fit inside the frame */
-    height: auto;
+    width: 100%; /* Fit inside the frame */
+    height: 50%px;
     border-radius: 10px;
     margin-top: 1rem;
 }
