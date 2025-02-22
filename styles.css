@@ -78,7 +78,7 @@ header {
 .heart {
     font-size: 300%;
     color: #ffffff;
-    margin: 0 30px; /* Adds spacing between the heart and avatars */
+    margin: 0 20px; /* Adds spacing between the heart and avatars */
     position: relative;
     top: -15px; /* Dịch lên trên 20px */
 }
