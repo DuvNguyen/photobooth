@@ -6,7 +6,7 @@
 
 
 header {
-    background-image: url('png/header_alternate_background.jpg'); /* Replace with your actual file path */
+    background-image: url('png/header_back.jpg'); /* Replace with your actual file path */
     background-size: cover; /* Makes the image cover the entire header */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
@@ -17,7 +17,7 @@ header {
     align-items: center;
     justify-content: center;
     color: white; /* Text color */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Improves text readability */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1); /* Improves text readability */
 }
 
 
@@ -25,7 +25,8 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0 auto;
-    background-image: url("png/backgorund_2.jpg");
+    /* background-image: url("png/backgorund_2.jpg"); */
+    background-image: url("png/fullSreenBackGround1.jpg");
     max-width: 414px;
     padding: 10px;
 }
@@ -36,6 +37,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    
 }
 
 .avatars {
@@ -50,8 +52,18 @@ header {
     padding: 20px; /* Tạo khoảng cách đẹp hơn */
     border: 6px solid #ffa2b3;
     border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+
+    transition: all 0.3s ease-in-out;
 }
 
+.avatars:hover {
+    background-color: #ffb3c6; /* Hồng đậm hơn khi hover */
+    transform: scale(1.04); /* Phóng to nhẹ */
+    border: 4px solid #eb597d;
+
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.7); /* Bóng đậm hơn */
+}
 
 
 .avatar {
@@ -62,6 +74,7 @@ header {
     background-color: lightgray; /* Helps visualize if no image is set */
     margin-top: 20px;
     border: 3px solid #ffb3c6;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .avatar-container {
@@ -112,7 +125,7 @@ header {
     transform: scale(1.1); /* Phóng to nhẹ */
     border: 3px solid #eb597d;
 
-    
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
 }
 
 #scrollToTop {
@@ -128,7 +141,7 @@ header {
 
     border: 3px solid #ffb3c6;
 
-    margin-top: 100px;
+    margin-top: 70px;
 
 }
 
@@ -163,8 +176,21 @@ header {
 
 .photo {
     width: 100%;
-    height: auto;
+    max-width: 300px;
     border-radius: 10px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.5s ease-in-out, 
+                filter 0.5s ease-in-out;
+    
+    /* Đổ bóng mềm hơn */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Khi hover vào */
+.photo:hover {
+    transform: scale(1.08); /* Phóng to nhẹ */
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
+    filter: brightness(1.07); /* Tăng sáng nhẹ để nổi bật */
 }
 
 
@@ -174,6 +200,7 @@ header {
     display: grid;
     gap: 150px;
     margin-left: 1%;
+    
 }
 
 /*Photos in gallery1*/
@@ -182,6 +209,19 @@ header {
     height: 50%px;
     border-radius: 10px;
     margin-top: 1rem;
+
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.5s ease-in-out, 
+                filter 0.5s ease-in-out;
+    
+    /* Đổ bóng mềm hơn */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bigphoto:hover {
+    transform: scale(1.08); /* Phóng to nhẹ */
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
+    filter: brightness(1.1); /* Tăng sáng nhẹ để nổi bật */
 }
 
 
