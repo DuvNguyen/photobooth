@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!--Script này để kết nối GG analytics theo dõi số người xem trang-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WYXQFTYY2Y'); 
+    </script>
+    <!--END!-->
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Love Gallery</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="png/WebIcon.png">
-
 
     <style>
         .thank-you {
@@ -121,11 +133,11 @@
 
         <!-- Nơi chứa ảnh photobooth-->
         <section id = "gallery" class="gallery">
-            <img src="png/photobooth1.JPG" alt="Memory 1" class="photo">
-            <img src="png/photobooth2.JPG" alt="Memory 2" class="photo">
-            <img src="png/photobooth3.png" alt="Memory 3" class="photo">
-            <img src="png/photobooth4.png" alt="Memory 4" class="photo">
-            <img src="png/photobooth5.JPG" alt="Memory 5" class="photo">
+            <img src="png/photobooth1.JPG" alt="Memory 1" id = "myImage" class="photo">
+            <img src="png/photobooth2.JPG" alt="Memory 2" id = "myImage" class="photo">
+            <img src="png/photobooth3.png" alt="Memory 3" id = "myImage" class="photo">
+            <img src="png/photobooth4.png" alt="Memory 4" id = "myImage" class="photo">
+            <img src="png/photobooth5.JPG" alt="Memory 5" id = "myImage" class="photo">
             
         </section>
 
@@ -133,8 +145,11 @@
             <img src="png/photobooth6.JPG" alt="Memory 6" class="bigphoto">
         </section>
         
-        <button id="scrollToTop">Lên luonn nàaa 🚀</button>
-
+        <div>
+            <button id="scrollToTop">Lên luonn nàaa 🚀</button>
+        </div>
+                
+     
     </main>
     <script src="index.js"></script>
 </body>
