@@ -52,5 +52,33 @@ document.addEventListener("DOMContentLoaded", function() {
         clearTimeout(timer); // Hủy nếu không nhấn đủ lâu
     });
 });
-
 //END SCRIPT
+
+// change background button
+function changeBackgroundSmoothly(newImage) {
+    let body = document.body;
+    body.style.transition = "opacity 0.5s ease-in-out"; // Smooth fade transition
+    body.style.opacity = "0"; // Fade out
+
+    setTimeout(() => {
+        body.style.backgroundImage = `url('${newImage}')`; // Change background
+        body.style.opacity = "1"; // Fade in
+    }, 500);
+}
+
+// Change background when Button 1 is clicked
+document.getElementById("changeBackgroundImg1").addEventListener("click", function () {
+    changeBackgroundSmoothly("png/fullSreenBackGround2.jpg");
+});
+
+// Change background when Button 2 is clicked
+document.getElementById("changeBackgroundImg2").addEventListener("click", function () {
+    changeBackgroundSmoothly("png/fullSreenBackGround1.jpg");
+});
+
+// Change background when Button 3 is clicked
+document.getElementById("changeBackgroundImg3").addEventListener("click", function () {
+    changeBackgroundSmoothly("png/PinkGridBackGround.jpg");
+});
+
+

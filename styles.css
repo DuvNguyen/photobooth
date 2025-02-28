@@ -102,8 +102,37 @@ header {
 
 
 .button {
+    background-color: beige;
     margin-top: 100px;
 }
+
+.changeBackgroundButton {
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    border: none;
+    transition: opacity 0.2s ease-in-out; /* Smooth transition */
+    border: solid rgba(85, 38, 38, 0.2);
+    
+}
+
+#changeBackgroundImg1 {
+    background-image: url("png/fullSreenBackGround2.jpg"); /* Initial image */
+}
+
+#changeBackgroundImg2 {
+    background-image: url("png/fullSreenBackGround1.jpg");
+}
+
+#changeBackgroundImg3 {
+    background-image: url("png/PinkGridBackGround.jpg");
+}
+
 
 #scrollToGallery {
     font-family: 'Bubblegum Sans', cursive; /* Font chữ dễ thương */
