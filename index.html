@@ -4,6 +4,31 @@
 
     <!--Script này để kết nối GG analytics theo dõi số người xem trang-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYXQFTYY2Y"></script>
+
+    <!--Script này ngăn bấm chuột phải-->
+    <script>document.addEventListener('contextmenu', event => event.preventDefault()); </script>
+
+    <script>
+  let pressTimer;
+
+    document.querySelectorAll('.photo').forEach(el => {
+    el.addEventListener('touchstart', function (e) {
+      pressTimer = setTimeout(function () {
+        e.preventDefault(); // ngăn hành động mặc định sau giữ lâu
+      }, 300); // 300ms là khoảng ngưỡng nhận diện "giữ lâu"
+    });
+
+    el.addEventListener('touchend', function () {
+      clearTimeout(pressTimer);
+    });
+
+    el.addEventListener('touchmove', function () {
+        clearTimeout(pressTimer); // huỷ nếu người dùng vuốt
+        });
+    });
+    </script>
+
+
     
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -33,9 +58,10 @@
         /*for the MEMORIES text*/
         .thank-you2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 30px; /* Adjusted for mobile */
+            font-size: 50px; /* Adjusted for mobile */
             text-align: center;
             margin-top: 100px;
+            margin-bottom: 0px;
             color: #ff4d6d;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
@@ -43,10 +69,10 @@
 </head>
 <body>
     <header>
-        <h1 class="thank-you">Photobooth Album</h1>
+        <h1 class="thank-you">Photobooth</h1>
     </header>
         
-    
+<!--     
     <div class="avatars">
         <div class="avatar-container">
             <img src="png/avt_cuaDuyen.PNG" alt="Avatar 1" class="avatar">
@@ -57,7 +83,7 @@
             <img src="png/avt_cuaTeo.jpg" alt="Avatar 2" class="avatar">
             <p class="name">levi</p>
         </div>
-    </div>
+    </div> -->
 
     <div>
         <button id = "changeBackgroundImg1" class = "changeBackgroundButton" ></button>
@@ -76,7 +102,7 @@
             
         }
     </style>
-    <a class = "titleChangingBackground">Chọn hình nền mà bạn thích đii</a>
+    <a class = "titleChangingBackground">Chọn hình nền</a>
 
     <div>
         <button id="scrollToGallery" class = "button">Xem Gallery 📸</button>
@@ -147,7 +173,7 @@
             <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
             <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
 
-        <h2 class="thank-you2">MEMORIES</h2>
+        <h2 class="thank-you2">GALLERY</h2>
 
         <!-- Nơi chứa ảnh photobooth-->
         <section id = "gallery" class="gallery">
@@ -155,16 +181,21 @@
             <img src="png/photobooth2.JPG" alt="Memory 2" id = "myImage" class="photo">
             <img src="png/photobooth3.png" alt="Memory 3" id = "myImage" class="photo">
             <img src="png/photobooth4.png" alt="Memory 4" id = "myImage" class="photo">
+            <img src="png/photobooth8.JPG" alt="Memory 8" id = "myImage" class="photo">
+            <img src="png/photobooth9.JPG" alt="Memory 9" id = "myImage" class="photo">
+            <img src="png/photobooth10.JPG" alt="Memory 10" id = "myImage" class="photo">
             <img src="png/photobooth5.JPG" alt="Memory 5" id = "myImage" class="photo">
             
         </section>
 
+        <!--Nơi chứa ảnh photobooth lớn-->
         <section class="gallery1">
             <img src="png/photobooth6.JPG" alt="Memory 6" class="bigphoto">
+            <img src="png/photobooth7.JPG" alt="Memory 7" class="bigphoto">
         </section>
         
         <div>
-            <button id="scrollToTop">Lên luonn nàaa 🚀</button>
+            <button id="scrollToTop"> Bay lênnnnn🚀</button>
         </div>
                 
      

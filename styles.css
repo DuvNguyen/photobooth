@@ -213,6 +213,10 @@ header {
     
     /* Đổ bóng mềm hơn */
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+    user-select: none;
+    pointer-events: auto;
+    -webkit-user-drag: none;
 }
 
 /* Khi hover vào */
@@ -227,7 +231,7 @@ header {
 .gallery1 {
     display: flex;
     display: grid;
-    gap: 150px;
+    gap: 5px;
     margin-left: 1%;
     
 }
