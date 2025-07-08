@@ -3,18 +3,25 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # hoặc 'master' nếu bạn dùng master
+      - main
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    environment:
+      name: github-pages     # ⚠️ BẮT BUỘC
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Pages
@@ -23,7 +30,8 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # nơi chứa file index.html
+          path: .             # ⚠️ Đảm bảo nơi chứa index.html
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
+        id: deployment        # ⚠️ Đặt id để lấy outputs.page_url
+        uses: actions/deploy-pages@v4
