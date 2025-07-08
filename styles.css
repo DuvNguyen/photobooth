@@ -207,9 +207,11 @@ header {
     width: 100%;
     max-width: 300px;
     border-radius: 10px;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+    transition: 
+                transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
                 box-shadow 0.5s ease-in-out, 
-                filter 0.5s ease-in-out;
+                filter 0.5s ease-in-out,
+                opacity 0.5s ease-in-out; /* Dòng này để mờ dần */
     
     /* Đổ bóng mềm hơn */
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
@@ -217,6 +219,8 @@ header {
     user-select: none;
     pointer-events: auto;
     -webkit-user-drag: none;
+
+    opacity: 0;           /* Ban đầu ẩn */
 }
 
 /* Khi hover vào */
@@ -224,6 +228,10 @@ header {
     transform: scale(1.08); /* Phóng to nhẹ */
     box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
     filter: brightness(1.07); /* Tăng sáng nhẹ để nổi bật */
+}
+
+.photo.show {
+    opacity: 1;           /* Khi có class 'show' sẽ hiện lên */
 }
 
 
@@ -257,5 +265,39 @@ header {
     filter: brightness(1.1); /* Tăng sáng nhẹ để nổi bật */
 }
 
+.pagination-btn {
+  background-color: #ff4d6e9c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  font-family: 'Arial';
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4);
+  
+}
 
+.pagination-btn:hover {
+  background-color: #eb637a89;
+  transform: scale(1.05);
+}
+
+.pagination-btn.active {
+  background-color: #fdbac6;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* this code serves fading for page change*/
+.fade {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.fade.show {
+  opacity: 1;
+}
 
