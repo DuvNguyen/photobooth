@@ -247,7 +247,6 @@ header {
 /*Photos in gallery1*/
 .bigphoto {
     width: 100%; /* Fit inside the frame */
-    height: 50%px;
     border-radius: 10px;
     margin-top: 1rem;
 

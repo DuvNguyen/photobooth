@@ -2,9 +2,9 @@
 console.log("✅ index.js đã load thành công!");
 
 
-// tự động zoom 180% với kích thước màn lớn
-if (window.innerWidth >= 1024) { // Chỉ áp dụng trên máy tính
-    document.body.style.zoom = "180%";
+// tự động zoom 150% với kích thước màn lớn
+if (window.innerWidth >= 1000) { // Chỉ áp dụng trên máy tính
+    document.body.style.zoom = "130%";
 }
 
 // nút nhảy xuống ảnh photobooth
@@ -102,6 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+    // Cuộn về đầu phần gallery
+    document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
     
     // Xóa class active khỏi tất cả nút
     document.querySelectorAll('.pagination-btn').forEach(btn => {
@@ -148,6 +150,10 @@ function showBigPhotoPage(page) {
     btn.classList.remove('active');
   });
   document.querySelectorAll('.bigphoto-btn')[page - 1].classList.add('active');
+
+  // Cuộn về đầu phần gallery
+    document.getElementById('gallery1').scrollIntoView({ behavior: 'smooth' });
+
 }
 
 function setupBigPhotoPagination() {
