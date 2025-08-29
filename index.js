@@ -1,117 +1,112 @@
+// Force scroll to top on first load
+window.addEventListener("load", function () {
+  setTimeout(() => window.scrollTo(0, 0), 0);
+});
+
 // Dòng kiểm tra JS đã chạy chưa
 console.log("✅ index.js đã load thành công!");
 
-
-// tự động zoom 150% với kích thước màn lớn
-if (window.innerWidth >= 1000) { // Chỉ áp dụng trên máy tính
-    document.body.style.zoom = "130%";
+// tự động zoom 130% với kích thước màn lớn
+if (window.innerWidth >= 1000) {
+  document.body.style.zoom = "130%";
 }
 
 // nút nhảy xuống ảnh photobooth
 document.getElementById("scrollToGallery").addEventListener("click", function() {
-    document.getElementById("gallery").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("gallery").scrollIntoView({ behavior: "smooth" });
 });
 
 // Nút quay lên đầu trang
 document.getElementById("scrollToTop").addEventListener("click", function() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-
-/* Theo dõi số người click chuột phải (trên máy tính) hoăc bấm giữ lâu (trên điện thoại) - có thể 
-là họ đang tính tải ảnh về*/
+// Theo dõi click chuột phải / nhấn giữ lâu trên ảnh
 document.addEventListener("DOMContentLoaded", function() {
-    let timer;
-    let longPressTime = 500; // 500ms để xác định nhấn giữ lâu
+  let timer;
+  let longPressTime = 500; // 500ms để xác định nhấn giữ lâu
+  let img = document.getElementById("myImage");
 
-    let img = document.getElementById("myImage");
-
-    // Theo dõi chuột phải trên PC
-    img.addEventListener("contextmenu", function(event) {
-        console.log("📌 Người dùng đã nhấp chuột phải vào ảnh.");
-        gtag('event', 'download_image', {
-            'event_category': 'Image',
-            'event_label': 'My Image (Right Click)'
-        });
+  img.addEventListener("contextmenu", function() {
+    console.log("📌 Người dùng đã nhấp chuột phải vào ảnh.");
+    gtag('event', 'download_image', {
+      'event_category': 'Image',
+      'event_label': 'My Image (Right Click)'
     });
+  });
 
-    // Theo dõi nhấn giữ trên điện thoại
-    img.addEventListener("touchstart", function(event) {
-        console.log("⏳ Người dùng bắt đầu nhấn giữ ảnh...");
-        timer = setTimeout(function() {
-            console.log("✅ Người dùng đã nhấn giữ đủ lâu, tính là tải ảnh.");
-            gtag('event', 'download_image', {
-                'event_category': 'Image',
-                'event_label': 'My Image (Long Press)'
-            });
-        }, longPressTime);
-    });
+  img.addEventListener("touchstart", function() {
+    console.log("⏳ Người dùng bắt đầu nhấn giữ ảnh...");
+    timer = setTimeout(function() {
+      console.log("✅ Người dùng đã nhấn giữ đủ lâu, tính là tải ảnh.");
+      gtag('event', 'download_image', {
+        'event_category': 'Image',
+        'event_label': 'My Image (Long Press)'
+      });
+    }, longPressTime);
+  });
 
-    img.addEventListener("touchend", function() {
-        console.log("❌ Người dùng thả tay ra trước khi đủ lâu, không tính tải ảnh.");
-        clearTimeout(timer); // Hủy nếu không nhấn đủ lâu
-    });
+  img.addEventListener("touchend", function() {
+    console.log("❌ Người dùng thả tay ra trước khi đủ lâu, không tính tải ảnh.");
+    clearTimeout(timer);
+  });
 });
-//END SCRIPT
 
-// change background button
+// Change background smoothly
 function changeBackgroundSmoothly(newImage) {
-    let body = document.body;
-    body.style.transition = "opacity 0.5s ease-in-out"; // Smooth fade transition
-    body.style.opacity = "0"; // Fade out
+  let body = document.body;
+  body.style.transition = "opacity 0.5s ease-in-out";
+  body.style.opacity = "0";
 
-    setTimeout(() => {
-        body.style.backgroundImage = `url('${newImage}')`; // Change background
-        body.style.opacity = "1"; // Fade in
-    }, 500);
+  setTimeout(() => {
+    body.style.backgroundImage = `url('${newImage}')`;
+    body.style.opacity = "1";
+  }, 500);
 }
 
 // Change background when Button 1 is clicked
 document.getElementById("changeBackgroundImg1").addEventListener("click", function () {
-    changeBackgroundSmoothly("png/fullSreenBackGround2.jpg");
+  changeBackgroundSmoothly("png/fullSreenBackGround2.jpg");
 });
 
 // Change background when Button 2 is clicked
 document.getElementById("changeBackgroundImg2").addEventListener("click", function () {
-    changeBackgroundSmoothly("png/fullSreenBackGround1.jpg");
+  changeBackgroundSmoothly("png/fullSreenBackGround1.jpg");
 });
 
 // Change background when Button 3 is clicked
 document.getElementById("changeBackgroundImg3").addEventListener("click", function () {
-    changeBackgroundSmoothly("png/PinkGridBackGround.jpg");
+  changeBackgroundSmoothly("png/PinkGridBackGround.jpg");
 });
 
-
-// this block of code serves paging simulation - photos
+// Paging simulation - photos
 document.addEventListener('DOMContentLoaded', () => {
   const photos = document.querySelectorAll('#gallery .photo');
-  const photosPerPage = 4; // số ảnh mỗi trang
+  const photosPerPage = 4;
   const pagination = document.getElementById('pagination');
 
-  function showPage(page) {
+  function showPage(page, shouldScroll = true) {
     const start = (page - 1) * photosPerPage;
     const end = page * photosPerPage;
 
     photos.forEach((photo, index) => {
-  photo.classList.remove('show'); // reset hiệu ứng
-  if (index >= start && index < end) {
-    photo.style.display = 'inline-block';
-    setTimeout(() => photo.classList.add('show'), 10); // thêm hiệu ứng mờ dần
-  } else {
-    photo.style.display = 'none';
-  }
-});
-
-    // Cuộn về đầu phần gallery
-    document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
-    
-    // Xóa class active khỏi tất cả nút
-    document.querySelectorAll('.pagination-btn').forEach(btn => {
-    btn.classList.remove('active');
+      photo.classList.remove('show');
+      if (index >= start && index < end) {
+        photo.style.display = 'inline-block';
+        setTimeout(() => photo.classList.add('show'), 10);
+      } else {
+        photo.style.display = 'none';
+      }
     });
-    // Đánh dấu nút đang chọn
-    document.querySelectorAll('.pagination-btn')[page - 1].classList.add('active');
 
+    if (shouldScroll) {
+      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.pagination-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelectorAll('.pagination-btn')[page - 1].classList.add('active');
   }
 
   function setupPagination() {
@@ -121,24 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= totalPages; i++) {
       const btn = document.createElement('button');
       btn.textContent = i;
-      btn.classList.add('pagination-btn'); // thêm class CSS
+      btn.classList.add('pagination-btn');
       btn.style.margin = '0 5px';
-      btn.addEventListener('click', () => showPage(i));
+      btn.addEventListener('click', () => showPage(i, true));
       pagination.appendChild(btn);
     }
 
-    showPage(1); // Hiển thị trang đầu tiên khi tải trang
+    showPage(1, false); // do NOT scroll on initial load
   }
 
   setupPagination();
 });
 
-// Paging for bigphotos
+// Paging for big photos
 const bigPhotos = document.querySelectorAll('.gallery1 .bigphoto');
-const bigPhotosPerPage = 1; // Hoặc 2 nếu bạn muốn
+const bigPhotosPerPage = 1;
 const bigPhotoPagination = document.getElementById('bigphoto-pagination');
 
-function showBigPhotoPage(page) {
+function showBigPhotoPage(page, shouldScroll = true) {
   const start = (page - 1) * bigPhotosPerPage;
   const end = page * bigPhotosPerPage;
 
@@ -151,9 +146,9 @@ function showBigPhotoPage(page) {
   });
   document.querySelectorAll('.bigphoto-btn')[page - 1].classList.add('active');
 
-  // Cuộn về đầu phần gallery
+  if (shouldScroll) {
     document.getElementById('gallery1').scrollIntoView({ behavior: 'smooth' });
-
+  }
 }
 
 function setupBigPhotoPagination() {
@@ -163,12 +158,12 @@ function setupBigPhotoPagination() {
   for (let i = 1; i <= totalPages; i++) {
     const btn = document.createElement('button');
     btn.textContent = i;
-    btn.classList.add('pagination-btn', 'bigphoto-btn'); // dùng CSS chung
-    btn.addEventListener('click', () => showBigPhotoPage(i));
+    btn.classList.add('pagination-btn', 'bigphoto-btn');
+    btn.addEventListener('click', () => showBigPhotoPage(i, true));
     bigPhotoPagination.appendChild(btn);
   }
 
-  showBigPhotoPage(1); // Trang đầu tiên
+  showBigPhotoPage(1, false); // do NOT scroll on initial load
 }
 
 setupBigPhotoPagination();
