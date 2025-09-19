@@ -227,7 +227,7 @@ header {
 .photo:hover {
     transform: scale(1.08); /* Phóng to nhẹ */
     box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
-    filter: brightness(1.07); /* Tăng sáng nhẹ để nổi bật */
+    filter: brightness(1.03); /* Tăng sáng nhẹ để nổi bật */
 }
 
 .photo.show {
@@ -261,7 +261,7 @@ header {
 .bigphoto:hover {
     transform: scale(1.08); /* Phóng to nhẹ */
     box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
-    filter: brightness(1.1); /* Tăng sáng nhẹ để nổi bật */
+    filter: brightness(1.03); /* Tăng sáng nhẹ để nổi bật */
 }
 
 .pagination-btn {
