@@ -8,7 +8,7 @@ console.log("✅ index.js đã load thành công!");
 
 // tự động zoom 130% với kích thước màn lớn
 if (window.innerWidth >= 1000) {
-  document.body.style.zoom = "130%";
+  document.body.style.zoom = "120%";
 }
 
 // nút nhảy xuống ảnh photobooth
