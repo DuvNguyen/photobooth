@@ -10,7 +10,7 @@ if (window.innerWidth >= 1000) {
 
 // Scroll Buttons
 document.getElementById("scrollToGallery").addEventListener("click", function() {
-    document.getElementById("gallery").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("gallery-title").scrollIntoView({ behavior: "smooth" });
 });
 document.getElementById("scrollToTop").addEventListener("click", function() {
     window.scrollTo({ top: 0, behavior: "smooth" });

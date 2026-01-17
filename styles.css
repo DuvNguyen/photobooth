@@ -160,39 +160,43 @@ header {
 .play-btn:active { transform: scale(0.9); }
 
 /* --- DECORATIONS --- */
-.cute-images { align-items: center; margin: 160px 0; }
+.cute-images { align-items: center; margin: 30px 0; padding-top: 100px}
 .cute-image { width: 80px; height: 80px; object-fit: cover; margin-bottom: 60px; margin-right: 20px; }
 
 /* --- GALLERY (MASONRY LAYOUT) --- */
+
 .gallery {
-    column-count: 2;
-    column-gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Khoảng cách giữa các ảnh */
     padding: 10px;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 .photo {
-    width: 100%;
+    /* Tính toán: 50% chiều rộng trừ đi một nửa khoảng cách gap */
+    width: calc(50% - 8px); 
+    
     display: block;
-    margin-bottom: 15px;
-    break-inside: avoid;
+    margin-bottom: 0; /* Flexbox dùng gap nên không cần margin dưới */
+    object-fit: cover; /* Giúp ảnh không bị méo */
+    
+    /* Trang trí giữ nguyên */
     border-radius: 10px;
-    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0; /* Ẩn mặc định để JS xử lý phân trang */
-    user-select: none;
-    -webkit-user-drag: none;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; 
 }
 
 .photo.show { opacity: 1; transform: translateY(0); }
 .photo:hover { transform: scale(1.02); box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); filter: brightness(1.03); }
 
 /* --- GALLERY BIG --- */
-.gallery1 { display: grid; gap: 5px; margin-left: 1%; }
-.bigphoto { width: 100%; border-radius: 10px; margin-top: 1rem; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); transition: transform 0.5s; }
+.gallery1 { display: grid; gap: 5px; margin-left: 1%; padding-top: 30px }
+.bigphoto { width: 100%; border-radius: 10px; margin-top: 1rem; margin-bottom:15px ;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); transition: transform 0.5s; }
 .bigphoto:hover { transform: scale(1.02); box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); filter: brightness(1.03); }
 
-/* --- MODAL (FINAL VERSION) --- */
+/* --- MODAL --- */
 .modal {
     display: none;
     position: fixed;
@@ -240,4 +244,35 @@ header {
 @keyframes zoom-flex {
     from { transform: scale(0.6); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
+}
+
+
+/* --- FOOTER (COPYRIGHT STYLE NHẠC) --- */
+footer {
+    margin-top: 60px; /* Cách xa phần trên ra cho thoáng */
+    padding-bottom: 40px; /* Cách đáy màn hình */
+    text-align: center;
+}
+
+.copyright {
+    font-family: 'Arial', sans-serif; /* Font đơn giản hiện đại */
+    font-size: 13px; /* Kích thước nhỏ nhắn */
+    
+    /* MÀU XÁM GIỐNG TÊN CA SĨ */
+    color: #66C; 
+    
+    font-weight: 600; /* Hơi đậm nhẹ cho dễ đọc */
+    letter-spacing: 0px;
+    padding-top: 30px;
+
+    
+
+    /* Đổ bóng trắng nhẹ xung quanh chữ để nổi bật trên nền ảnh */
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* Tên bạn thì cho đậm hơn một tí xíu cho oách */
+.copyright b {
+    color: #444; /* Xám đậm hơn chút xíu */
+    font-weight: bold;
 }
