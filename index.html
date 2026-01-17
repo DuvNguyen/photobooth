@@ -1,248 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!--icon-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!--Script này để kết nối GG analytics theo dõi số người xem trang-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYXQFTYY2Y"></script>
-
-    <!--Script này ngăn bấm chuột phải-->
-    <!-- <script>document.addEventListener('contextmenu', event => event.preventDefault()); </script> -->
-
-    <script>
-  let pressTimer;
-
-    document.querySelectorAll('.photo').forEach(el => {
-    el.addEventListener('touchstart', function (e) {
-      pressTimer = setTimeout(function () {
-        e.preventDefault(); // ngăn hành động mặc định sau giữ lâu
-      }, 300); // 300ms là khoảng ngưỡng nhận diện "giữ lâu"
-    });
-
-    el.addEventListener('touchend', function () {
-      clearTimeout(pressTimer);
-    });
-
-    el.addEventListener('touchmove', function () {
-        clearTimeout(pressTimer); // huỷ nếu người dùng vuốt
-        });
-    });
-    </script>
-
-
-    
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WYXQFTYY2Y'); 
-    </script>
-    <!--END!-->
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Online Photobooth Gallery</title>
+    <title>Online Photobooth Gallery</title>
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="png/WebIcon.png">
 
-    <style>
-        .thank-you {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px; /* Adjusted for mobile */
-            text-align: center;
-            margin-top: 10px;
-            color: #ff4d6d;
-        }
-
-        /*for the MEMORIES text*/
-        .thank-you2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 50px; /* Adjusted for mobile */
-            text-align: center;
-            margin-top: 100px;
-            margin-bottom: 0px;
-            color: #ff4d6d;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYXQFTYY2Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WYXQFTYY2Y'); 
+    </script>
 </head>
 <body>
     <header>
         <h1 class="thank-you">Photobooth</h1>
     </header>
-        
-<!--     
-    <div class="avatars">
-        <div class="avatar-container">
-            <img src="png/avt_cuaDuyen.PNG" alt="Avatar 1" class="avatar">
-            <p class="name">ndienn</p>
-        </div>
-        <div class="heart">&#10084;</div>
-        <div class="avatar-container">
-            <img src="png/avt_cuaTeo.jpg" alt="Avatar 2" class="avatar">
-            <p class="name">levi</p>
-        </div>
-    </div> -->
 
     <div>
-        <button id = "changeBackgroundImg1" class = "changeBackgroundButton" ></button>
-        <button id = "changeBackgroundImg2" class = "changeBackgroundButton" ></button>
-        <button id = "changeBackgroundImg3" class = "changeBackgroundButton" ></button>
+        <button id="changeBackgroundImg1" class="changeBackgroundButton"></button>
+        <button id="changeBackgroundImg2" class="changeBackgroundButton"></button>
+        <button id="changeBackgroundImg3" class="changeBackgroundButton"></button>
     </div>
 
     <style>
         .titleChangingBackground{
             font-family: 'Dancing Script';
-            font-size: 20px; /* Adjusted for mobile */
+            font-size: 20px;
             text-align: center;
-            margin-top: 150px;
+            margin-top: 30px;
             color: #45151e;
             text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-            
+            display: block;
         }
     </style>
-    <a class = "titleChangingBackground">Chọn hình nền</a>
+    <span class="titleChangingBackground">Chọn hình nền</span>
 
-        <!--media player-->
-        <div class="music-player">
-            
-            <div class="track-info">
-                <img src="png/cover.png" alt="Album Art" class="album-art">
-                
-                <div class="track-details">
-                    <div class="track-name">Và Thế Giới Đã Mất Đi Một Người Cô Đơn</div>
-                    <div class="artist-name">Marzuz, Changg</div>
-                </div>
+    <div class="music-player">
+        <div class="track-info">
+            <img src="png/cover.png" alt="Album Art" class="album-art">
+            <div class="track-details">
+                <div class="track-name">Và Thế Giới Đã Mất Đi Một Người Cô Đơn</div>
+                <div class="artist-name">Marzuz, Changg</div>
             </div>
-
-            <div class="time-control">
-                <span id="current-time">0:00</span>
-                <input type="range" id="progress" value="0" max="100">
-                <span id="duration">0:00</span>
-            </div>
-
-            <div class="controls">
-                <div class="ctrl-btn"><i class="fa-solid fa-shuffle"></i></div>
-                <div class="ctrl-btn"><i class="fa-solid fa-backward-step"></i></div>
-                <div class="play-btn" id="playPauseBtn">
-                    <i class="fa-solid fa-play" id="playIcon"></i>
-                </div>
-                <div class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></div>
-                <div class="ctrl-btn"><i class="fa-solid fa-repeat"></i></div>
-            </div>
-
-            <audio id="song">
-                <source src="music.mp3" type="audio/mpeg">
-            </audio>
         </div>
 
+        <div class="time-control">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress" value="0" max="100">
+            <span id="duration">0:00</span>
+        </div>
+
+        <div class="controls">
+            <div class="ctrl-btn"><i class="fa-solid fa-shuffle"></i></div>
+            <div class="ctrl-btn"><i class="fa-solid fa-backward-step"></i></div>
+            <div class="play-btn" id="playPauseBtn">
+                <i class="fa-solid fa-play" id="playIcon"></i>
+            </div>
+            <div class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></div>
+            <div class="ctrl-btn"><i class="fa-solid fa-repeat"></i></div>
+        </div>
+
+        <audio id="song">
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <div>
-        <button id="scrollToGallery" class = "button">Xem Gallery 📸</button>
+        <button id="scrollToGallery" class="button">Xem Gallery 📸</button>
     </div>
     
     <main>
         <section class="cute-images">
-            <img src="png/shin1.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin2.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin3.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin6.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin7.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin8.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin9.png" alt="Cute Image 1" class="cute-image">
-
-            <img src="png/shin3.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin7.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin1.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin9.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin6.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin8.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin2.png" alt="Cute Image 1" class="cute-image">
-
-            <img src="png/shin6.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin8.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin2.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin7.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin3.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin1.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin9.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
-
-            <img src="png/shin1.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin2.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin3.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin6.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin7.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin8.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin9.png" alt="Cute Image 1" class="cute-image">
-            
-            <img src="png/shin3.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin7.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin1.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin9.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin6.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin8.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin2.png" alt="Cute Image 1" class="cute-image">
-
-            <img src="png/shin6.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin8.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin2.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin7.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin3.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin1.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin9.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
-
-            <img src="png/shin4.png" alt="Cute Image 1" class="cute-image">
-            <img src="png/shin5.png" alt="Cute Image 1" class="cute-image">
+            <img src="png/shin1.png" class="cute-image">
+            <img src="png/shin2.png" class="cute-image">
+            <img src="png/shin3.png" class="cute-image">
+            <img src="png/shin4.png" class="cute-image">
+            <img src="png/shin5.png" class="cute-image">
+            <img src="png/shin6.png" class="cute-image">
+            <img src="png/shin7.png" class="cute-image">
+            <img src="png/shin8.png" class="cute-image">
+            <img src="png/shin9.png" class="cute-image">
+            <img src="png/shin1.png" class="cute-image">
+             <img src="png/shin5.png" class="cute-image">
+        </section>
 
         <h2 class="thank-you2">GALLERY</h2>
 
-        <!-- Nơi chứa ảnh photobooth nhỏ-->
-        <section id = "gallery" class="gallery">
-            <img src="png/photobooth1.JPG" alt="Memory 1" id = "myImage" class="photo">
-            <img src="png/photobooth2.JPG" alt="Memory 2" id = "myImage" class="photo">
-            <img src="png/photobooth3.png" alt="Memory 3" id = "myImage" class="photo">
-            <img src="png/photobooth4.png" alt="Memory 4" id = "myImage" class="photo">
-            <img src="png/photobooth8.JPG" alt="Memory 8" id = "myImage" class="photo">
-            <img src="png/photobooth9.JPG" alt="Memory 9" id = "myImage" class="photo">
-            <img src="png/photobooth10.JPG" alt="Memory 10" id = "myImage" class="photo">
-            <img src="png/photobooth5.JPG" alt="Memory 5" id = "myImage" class="photo">
-            <img src="png/photobooth15.JPG" alt="Memory 15" id = "myImage" class="photo">
-            <img src="png/photobooth16.JPG" alt="Memory 16" id = "myImage" class="photo">
-            <img src="png/photobooth18.JPG" alt="Memory 18" id = "myImage" class="photo"> 
-            <img src="png/photobooth19.JPG" alt="Memory 19" id = "myImage" class="photo">
-            <img src="png/photoboothSingle1.JPG" alt="Memory 20" id = "myImage" class="photo"> 
-            <img src="png/photoboothSingle2.JPG" alt="Memory 20" id = "myImage" class="photo">
+        <section id="gallery" class="gallery">
+            <img src="png/photobooth1.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth2.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth3.png" class="photo" loading="lazy">
+            <img src="png/photobooth4.png" class="photo" loading="lazy">
+            <img src="png/photobooth8.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth9.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth10.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth5.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth15.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth16.JPG" class="photo" loading="lazy">
+            <img src="png/photobooth18.JPG" class="photo" loading="lazy"> 
+            <img src="png/photobooth19.JPG" class="photo" loading="lazy">
+            <img src="png/photoboothSingle1.JPG" class="photo" loading="lazy"> 
+            <img src="png/photoboothSingle2.JPG" class="photo" loading="lazy">
         </section>
 
-        <div id="pagination" style="text-align:center; margin-top: 30px;margin-bottom: 50px;"></div>
+        <div id="pagination" style="text-align:center; margin-top: 30px; margin-bottom: 50px;"></div>
 
-
-        <!--Nơi chứa ảnh photobooth lớn-->
         <section id="gallery1" class="gallery1">
-            <img src="png/photobooth6.JPG" alt="Memory 6" class="bigphoto">
-            <img src="png/photobooth7.JPG" alt="Memory 7" class="bigphoto">
-            <img src="png/photobooth11.JPG" alt="Memory 11" class="bigphoto">
-            <img src="png/photobooth12.JPG" alt="Memory 12" class="bigphoto">
-            <img src="png/photobooth13.JPG" alt="Memory 13" class="bigphoto">
-            <img src="png/photobooth17.JPG" alt="Memory 17" class="bigphoto">
-            <img src="png/photobooth20.JPG" alt="Memory 20" class="bigphoto">
+            <img src="png/photobooth6.JPG" class="bigphoto" loading="lazy">
+            <img src="png/photobooth7.JPG" class="bigphoto" loading="lazy">
+            <img src="png/photobooth11.JPG" class="bigphoto" loading="lazy">
+            <img src="png/photobooth12.JPG" class="bigphoto" loading="lazy">
+            <img src="png/photobooth13.JPG" class="bigphoto" loading="lazy">
+            <img src="png/photobooth17.JPG" class="bigphoto" loading="lazy">
+            <img src="png/photobooth20.JPG" class="bigphoto" loading="lazy">
             <video class="bigphoto" autoplay muted loop playsinline><source src="png/photobooth21.mp4" type="video/mp4"/></video>
-            <img src="png/photobooth14.JPG" alt="Memory 14" class="bigphoto"> <!-- make sure this gon the the last pic in Bigphoto-->
+            <img src="png/photobooth14.JPG" class="bigphoto" loading="lazy">
         </section>
         
         <div id="bigphoto-pagination" style="text-align:center; margin-top: 30px; margin-bottom: 50px"></div>
@@ -250,15 +129,13 @@
         <div>
             <button id="scrollToTop"> Trở lại🚀</button>
         </div>
-                
-     
     </main>
-        <div id="imageModal" class="modal">
-            <span class="close-modal">&times;</span>
-            <img class="modal-content" id="img01">
-        </div>
-    <script src="index.js"></script>
 
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
-

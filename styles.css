@@ -4,533 +4,240 @@
     box-sizing: border-box;
 }
 
-
-header {
-    background-image: url('png/header_back.jpg'); /* Replace with your actual file path */
-    background-size: cover; /* Makes the image cover the entire header */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
-   
-    height: 130px; /* Adjust height as needed */
-
-   
-    align-items: center;
-    justify-content: center;
-    color: white; /* Text color */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1); /* Improves text readability */
-}
-
-
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0 auto;
-    /* background-image: url("png/backgorund_2.jpg"); */
     background-image: url("png/fullSreenBackGround1.jpg");
-    max-width: 414px;
+    max-width: 414px; /* Kích thước mobile */
     padding: 10px;
 }
 
-
+/* --- HEADER --- */
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    
-}
-
-.avatars {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* Để khi màn hình nhỏ, avatar xuống dòng */
-    background: url('png/back_ground_for_avt.jpg') no-repeat center;
+    background-image: url('png/header_back.jpg');
     background-size: cover;
-    height: auto; /* Để nó co dãn theo nội dung */
-    max-width: 100%; /* Không vượt quá màn hình */
-    padding: 20px; /* Tạo khoảng cách đẹp hơn */
-    border: 6px solid #ffa2b3;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
-
-    transition: all 0.3s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
 }
 
-.avatars:hover {
-    background-color: #ffb3c6; /* Hồng đậm hơn khi hover */
-    transform: scale(1.04); /* Phóng to nhẹ */
-    border: 4px solid #eb597d;
-
-    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.7); /* Bóng đậm hơn */
+.thank-you {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #ff4d6d;
 }
 
+.thank-you2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    color: #ff4d6d;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
 
-.avatar {
-    width: 100px; /* Adjust size as needed */
-    height: 100px;
+/* --- BUTTONS (STYLED GRADIENT) --- */
+#scrollToGallery, #scrollToTop {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(135deg, #ff8fa3 0%, #ff4d6d 100%);
+    padding: 14px 35px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
+    display: inline-block;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#scrollToGallery:hover, #scrollToTop:hover {
+    background: linear-gradient(135deg, #ff4d6d 0%, #e03e5d 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 77, 109, 0.6);
+}
+
+#scrollToGallery:active, #scrollToTop:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 5px 10px rgba(255, 77, 109, 0.4);
+}
+
+/* Nút tròn đổi nền */
+.changeBackgroundButton {
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
-    object-fit: cover;
-    background-color: lightgray; /* Helps visualize if no image is set */
-    margin-top: 20px;
-    border: 3px solid #ffb3c6;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #fff; 
+    box-shadow: 0 0 0 3px #ffb3c6, 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.avatar-container {
+.changeBackgroundButton:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 0 3px #ff4d6d, 0 15px 30px rgba(0,0,0,0.3);
+}
+
+#changeBackgroundImg1 { background-image: url("png/fullSreenBackGround2.jpg"); }
+#changeBackgroundImg2 { background-image: url("png/fullSreenBackGround1.jpg"); }
+#changeBackgroundImg3 { background-image: url("png/PinkGridBackGround.jpg"); }
+
+/* Nút phân trang */
+.pagination-btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    color: #ff4d6d;
+    border: 1px solid #ffb3c6;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.pagination-btn:hover {
+    background-color: #ffb3c6;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.pagination-btn.active {
+    background: linear-gradient(135deg, #ff8fa3 0%, #ff4d6d 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    transform: scale(1.1);
+}
+
+/* --- MUSIC PLAYER (SPOTIFY STYLE) --- */
+.music-player {
+    width: 95%;
+    max-width: 380px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Căn giữa avatar và tên */
+    gap: 15px;
 }
 
-.name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff4d6d; /* Màu hồng lãng mạn */
-    font-family: 'Dancing Script'; /* Font chữ đẹp */
-    margin-top: 5px; /* Tạo khoảng cách giữa avatar và tên */
-}
+.track-info { display: flex; align-items: center; width: 100%; }
+.album-art { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.track-details { margin-left: 15px; flex: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; text-align: left;}
+.track-name { font-size: 16px; font-weight: bold; color: #222; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.artist-name { font-size: 13px; color: #666; }
 
+.time-control { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #555; font-weight: 600; margin-bottom: 5px; }
+#progress { width: 75%; height: 4px; background: #ddd; border-radius: 2px; cursor: pointer; margin: 0 10px; -webkit-appearance: none;}
+#progress::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 10px; background: #222; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 
-.heart {
-    font-size: 300%;
-    color: #ffffff;
-    margin: 0 20px; /* Adds spacing between the heart and avatars */
-    position: relative;
-    top: -8px; /* Dịch lên trên 20px */
-}
+.controls { display: flex; align-items: center; justify-content: space-around; padding: 0 10px; }
+.ctrl-btn { font-size: 18px; color: #444; cursor: pointer; transition: 0.2s; }
+.ctrl-btn:hover { color: #ff4d6d; }
+.play-btn { width: 55px; height: 55px; background-color: #222; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
+.play-btn:active { transform: scale(0.9); }
 
+/* --- DECORATIONS --- */
+.cute-images { align-items: center; margin: 160px 0; }
+.cute-image { width: 80px; height: 80px; object-fit: cover; margin-bottom: 60px; margin-right: 20px; }
 
-.button {
-    background-color: beige;
-    margin-top: 100px;
-}
-
-.changeBackgroundButton {
-    margin-top: 50px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 15px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-size: cover;
-    border: none;
-    transition: opacity 0.2s ease-in-out; /* Smooth transition */
-    border: solid rgba(85, 38, 38, 0.2);
-    
-}
-
-#changeBackgroundImg1 {
-    background-image: url("png/fullSreenBackGround2.jpg"); /* Initial image */
-}
-
-#changeBackgroundImg2 {
-    background-image: url("png/fullSreenBackGround1.jpg");
-}
-
-#changeBackgroundImg3 {
-    background-image: url("png/PinkGridBackGround.jpg");
-}
-
-
-#scrollToGallery {
-    font-family: 'Bubblegum Sans', cursive; /* Font chữ dễ thương */
-    font-size: 20px;
-    color: white;
-    background-color: #ffccda; /* Hồng nhạt */
-    padding: 12px 20px;
-    border-radius: 25px; /* Bo góc tròn */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-    border: 3px solid #ffb3c6;
-}
-
-/* Hiệu ứng hover khi rê chuột vào */
-#scrollToGallery:hover {
-    background-color: #ffb3c6; /* Hồng đậm hơn khi hover */
-    transform: scale(1.1); /* Phóng to nhẹ */
-    border: 3px solid #eb597d;
-
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
-}
-
-#scrollToTop {
-    font-family: 'Bubblegum Sans', cursive; /* Font chữ dễ thương */
-    font-size: 20px;
-    color: white;
-    background-color: #ffccda; /* Hồng nhạt */
-    padding: 12px 20px;
-    border-radius: 25px; /* Bo góc tròn */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-    border: 3px solid #ffb3c6;
-
-    margin-top: 70px;
-
-}
-
-#scrollToTop:hover {
-    background-color: #ffb3c6; /* Hồng đậm hơn khi hover */
-    transform: scale(1.1); /* Phóng to nhẹ */
-    border: 3px solid #eb597d;
-}
-
-
-.cute-images {
-    align-items: center;
-    margin: 160px 0;
-}
-
-.cute-image {
-    width: 80px; /* Adjust based on your preferred size */
-    height: 80px; /* Keeps it square */
-    object-fit: cover; /* Ensures the image fills the space */
-    margin-bottom: 60px;
-    margin-right: 20px;
-}
-
-
-/* .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 10px;
-    margin-top: 3rem;
-    
-} */
-
+/* --- GALLERY (MASONRY LAYOUT) --- */
 .gallery {
-    /* Sử dụng column thay vì grid để ảnh xếp so le đẹp hơn */
-    column-count: 2; /* Chia làm 2 cột */
-    column-gap: 15px; /* Khoảng cách giữa 2 cột */
+    column-count: 2;
+    column-gap: 15px;
     padding: 10px;
     margin-top: 3rem;
 }
 
 .photo {
-    width: 100%; /* Ảnh luôn rộng 100% của cột */
-    display: block; /* Quan trọng để tránh lỗi khoảng trắng dưới ảnh */
-    margin-bottom: 15px; /* Khoảng cách giữa các ảnh theo chiều dọc */
-    break-inside: avoid; /* Ngăn không cho ảnh bị cắt đôi giữa 2 cột */
-    
-    border-radius: 10px;
-    
-    
-    transition: 
-                transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                box-shadow 0.5s ease-in-out, 
-                filter 0.5s ease-in-out,
-                opacity 0.5s ease-in-out;
-    
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-
-    user-select: none;
-    /* pointer-events: auto; */
-    -webkit-user-drag: none;
-
-    opacity: 0;
-}
-
-/* Thêm đoạn này để khi có class 'show' ảnh sẽ hiện ra đúng kiểu Masonry */
-.photo.show {
-    opacity: 1;
-    transform: translateY(0); /* Đảm bảo ảnh nằm đúng vị trí */
-}
-
-/* Khi hover vào */
-.photo:hover {
-    transform: scale(1.02); /* Phóng to nhẹ */
-    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
-    filter: brightness(1.03); /* Tăng sáng nhẹ để nổi bật */
-}
-
-.photo.show {
-    opacity: 1;           /* Khi có class 'show' sẽ hiện lên */
-}
-
-
-/*for the bigger photobooth album*/
-.gallery1 {
-    display: flex;
-    display: grid;
-    gap: 5px;
-    margin-left: 1%;
-    
-}
-
-/*Photos in gallery1*/
-.bigphoto {
-    width: 100%; /* Fit inside the frame */
-    border-radius: 10px;
-    margin-top: 1rem;
-
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                box-shadow 0.5s ease-in-out, 
-                filter 0.5s ease-in-out;
-    
-    /* Đổ bóng mềm hơn */
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.bigphoto:hover {
-    transform: scale(1.02); /* Phóng to nhẹ */
-    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
-    filter: brightness(1.03); /* Tăng sáng nhẹ để nổi bật */
-}
-
-.pagination-btn {
-  background-color: #ff4d6e9c;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  margin: 5px;
-  border-radius: 8px;
-  font-family: 'Arial';
-  font-size: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4);
-  
-}
-
-.pagination-btn:hover {
-  background-color: #eb637a89;
-  transform: scale(1.05);
-}
-
-.pagination-btn.active {
-  background-color: #fdbac6;
-  color: #fff;
-  font-weight: bold;
-}
-
-/* this code serves fading for page change*/
-.fade {
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.fade.show {
-  opacity: 1;
-}
-
-/* =========================================
-   PHẦN MODAL (LIGHTBOX) ĐÃ SỬA CHUẨN
-   ========================================= */
-
-/* 1. Modal (nền tối) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100dvh; /* Chiều cao full màn hình */
-  background-color: rgba(0,0,0,0.95);
-  
-  /* QUAN TRỌNG: Cho phép cuộn dọc nếu ảnh dài */
-  overflow-y: auto; 
-  
-  /* Căn giữa ngang cho ảnh */
-  text-align: center;
-  
-  /* Tạo khoảng đệm để ảnh không dính sát mép khi cuộn */
-  padding: 30px 0;
-}
-
-/* --- ĐÃ XÓA ĐOẠN "Hack Flexbox" GÂY LỖI ĐỨNG HÌNH TẠI ĐÂY --- */
-
-/* 2. Ảnh bên trong Modal */
-.modal-content {
-  /* Dùng inline-block để ăn theo text-align: center của cha */
-  display: inline-block;
-  
-  /* KÍCH THƯỚC "BÉ BÉ TÍ" NHƯ BẠN MUỐN */
-  width: auto;
-  max-width: 85%;      /* Ngang tối đa 85% màn hình */
-  max-height: 85dvh;   /* Cao tối đa 70% màn hình thôi (cho nhỏ lại) */
-  
-  /* Tạo khoảng cách để khi cuộn thấy thoáng */
-  margin-top: 10px;
-  margin-bottom: 20px;
-  
-  /* Trang trí */
-  border-radius: 12px;
-  box-shadow: none; 
-  object-fit: contain; 
-  
-  /* Hiệu ứng */
-  animation: zoom-flex 0.3s ease-out;
-}
-
-/* 3. Nút đóng (X) */
-.close-modal {
-  position: absolute; /* Hoặc fixed nếu muốn nó luôn nổi */
-  top: 15px;
-  right: 25px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
-  z-index: 10000;
-  background: rgba(0, 0, 0, 0.3); /* Thêm nền mờ tí cho dễ nhìn */
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  line-height: 50px; /* Căn giữa chữ X */
-}
-
-.close-modal:hover,
-.close-modal:focus {
-  color: #ff4d6d;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* 4. Hiệu ứng Zoom */
-@keyframes zoom-flex {
-  from { transform: scale(0.6); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* --- ĐÃ XÓA ĐOẠN @MEDIA QUERY Ở CUỐI CÙNG VÌ NÓ LÀM LỆCH ẢNH --- */
-
-
-
-
-/* --- MUSIC PLAYER SPOTIFY STYLE --- */
-.music-player {
-    width: 95%;
-    max-width: 380px; /* Tăng chiều rộng một chút cho thoải mái */
-    margin: 20px auto;
-    padding: 20px; /* Tăng padding */
-    background: rgba(255, 255, 255, 0.6); /* Nền sáng hơn xíu */
-    backdrop-filter: blur(10px);
-    border-radius: 25px; /* Bo tròn nhiều hơn */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Khoảng cách giữa các phần */
-}
-
-/* 1. STYLE CHO THÔNG TIN BÀI HÁT */
-.track-info {
-    display: flex;
-    align-items: center;
     width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    break-inside: avoid;
+    border-radius: 10px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Ẩn mặc định để JS xử lý phân trang */
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-/* Ảnh bìa album */
-.album-art {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px; /* Bo góc ảnh */
-    object-fit: cover;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Bóng đổ nhẹ cho ảnh */
+.photo.show { opacity: 1; transform: translateY(0); }
+.photo:hover { transform: scale(1.02); box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); filter: brightness(1.03); }
+
+/* --- GALLERY BIG --- */
+.gallery1 { display: grid; gap: 5px; margin-left: 1%; }
+.bigphoto { width: 100%; border-radius: 10px; margin-top: 1rem; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); transition: transform 0.5s; }
+.bigphoto:hover { transform: scale(1.02); box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); filter: brightness(1.03); }
+
+/* --- MODAL (FINAL VERSION) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: rgba(0,0,0,0.95);
+    overflow-y: auto; /* Cho phép cuộn */
+    text-align: center;
+    padding: 30px 0;
 }
 
-/* Khu vực tên bài hát */
-.track-details {
-    margin-left: 15px; /* Cách ảnh bìa ra */
-    flex: 1; /* Chiếm hết không gian còn lại */
-    overflow: hidden; /* Ẩn phần chữ thừa nếu quá dài */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.modal-content {
+    display: inline-block;
+    width: auto;
+    max-width: 85%;
+    max-height: 85dvh; /* Ảnh nhỏ vừa phải */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: none;
+    object-fit: contain;
+    animation: zoom-flex 0.3s ease-out;
 }
 
-/* Tên bài hát */
-.track-name {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #f1f1f1;
+    font-size: 40px;
     font-weight: bold;
-    color: #222;
-    margin-bottom: 4px;
-    white-space: nowrap; /* Không xuống dòng */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Thêm dấu ... nếu tên quá dài */
-}
-
-/* Tên nghệ sĩ */
-.artist-name {
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-    color: #666; /* Màu xám nhạt hơn */
-}
-
-
-/* 2. STYLE CHO THANH THỜI GIAN (Chỉnh lại chút cho gọn) */
-.time-control {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    color: #555;
-    font-weight: 600;
-    margin-bottom: 5px; /* Giảm margin dưới */
-}
-
-#progress {
-    width: 75%; /* Thanh dài hơn xíu */
-    -webkit-appearance: none;
-    height: 4px;
-    background: #ddd; /* Màu nền thanh xám nhạt */
-    border-radius: 2px;
     cursor: pointer;
-    margin: 0 10px;
-}
-
-#progress::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 10px;
-    height: 10px;
-    background: #222; /* Nút màu đen đậm */
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.3);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    line-height: 50px;
 }
+.close-modal:hover { color: #ff4d6d; background: rgba(255, 255, 255, 0.2); }
 
-
-/* 3. STYLE CHO NÚT BẤM (Giữ nguyên vẻ đẹp cũ) */
-.controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 10px;
+@keyframes zoom-flex {
+    from { transform: scale(0.6); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
-
-.ctrl-btn {
-    font-size: 18px;
-    color: #444;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.ctrl-btn:hover { color: #ff4d6d; }
-
-.play-btn {
-    width: 55px; /* Nhỏ hơn xíu cho cân đối */
-    height: 55px;
-    background-color: #222;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-}
-
-.play-btn:active {
-    transform: scale(0.9);
-}
-/*duvnguyen*/
