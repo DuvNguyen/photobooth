@@ -167,3 +167,110 @@ function setupBigPhotoPagination() {
 }
 
 setupBigPhotoPagination();
+
+
+// --- Code Modal Lightbox ---
+
+// Lấy các phần tử modal
+var modal = document.getElementById("imageModal");
+var modalImg = document.getElementById("img01");
+var closeBtn = document.getElementsByClassName("close-modal")[0];
+
+// Gán sự kiện click cho TẤT CẢ các ảnh có class .photo
+// Sử dụng Delegation để code gọn hơn và hoạt động tốt với phân trang
+document.getElementById('gallery').addEventListener('click', function(e) {
+  if (e.target && e.target.classList.contains('photo')) {
+    modal.style.display = "block";
+    modalImg.src = e.target.src; // Lấy src của ảnh vừa bấm gán vào modal
+    
+    // Khóa cuộn trang web lại khi đang xem ảnh
+    document.body.style.overflow = "hidden";
+  }
+});
+
+// Xử lý đóng modal khi bấm nút X
+closeBtn.onclick = function() {
+  closeModal();
+}
+
+// Xử lý đóng modal khi bấm ra vùng đen bên ngoài ảnh
+modal.onclick = function(e) {
+  if (e.target === modal) {
+    closeModal();
+  }
+}
+
+// Hàm đóng modal chung
+function closeModal() {
+  modal.style.display = "none";
+  // Mở lại cuộn trang
+  document.body.style.overflow = "auto";
+}
+
+
+
+
+// --- MUSIC PLAYER LOGIC ---
+
+document.addEventListener("DOMContentLoaded", function() {
+    const song = document.getElementById("song");
+    const playBtn = document.getElementById("playPauseBtn");
+    const playIcon = document.getElementById("playIcon");
+    const progress = document.getElementById("progress");
+    const currTime = document.getElementById("current-time");
+    const durationTime = document.getElementById("duration");
+
+    // 1. Load thông tin khi nhạc tải xong
+    song.onloadedmetadata = function() {
+        progress.max = song.duration;
+        progress.value = song.currentTime;
+        durationTime.textContent = formatTime(song.duration);
+    }
+
+    // 2. Xử lý nút Play/Pause
+    playBtn.addEventListener("click", function() {
+        if (playIcon.classList.contains("fa-play")) {
+            song.play();
+            playIcon.classList.remove("fa-play");
+            playIcon.classList.add("fa-pause");
+        } else {
+            song.pause();
+            playIcon.classList.remove("fa-pause");
+            playIcon.classList.add("fa-play");
+        }
+    });
+
+    // 3. Thanh chạy tự động theo nhạc
+    if(song.play()){
+        setInterval(() => {
+            progress.value = song.currentTime;
+            currTime.textContent = formatTime(song.currentTime);
+            
+            // Nếu hát hết bài thì reset nút về Play
+            if(song.ended) {
+                playIcon.classList.remove("fa-pause");
+                playIcon.classList.add("fa-play");
+            }
+        }, 500);
+    }
+
+    // 4. Tua nhạc khi kéo thanh trượt
+    progress.onchange = function() {
+        song.currentTime = progress.value;
+        if(song.paused) {
+             song.play();
+             playIcon.classList.remove("fa-play");
+             playIcon.classList.add("fa-pause");
+        }
+    }
+
+    // Hàm định dạng giây sang phút:giây (VD: 65s -> 1:05)
+    function formatTime(seconds) {
+        let min = Math.floor(seconds / 60);
+        let sec = Math.floor(seconds % 60);
+        if (sec < 10) {
+            sec = `0${sec}`;
+        }
+        return `${min}:${sec}`;
+    }
+});

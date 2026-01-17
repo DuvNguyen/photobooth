@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 
+    <!--icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!--Script này để kết nối GG analytics theo dõi số người xem trang-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYXQFTYY2Y"></script>
 
@@ -103,6 +106,39 @@
         }
     </style>
     <a class = "titleChangingBackground">Chọn hình nền</a>
+
+        <!--media player-->
+        <div class="music-player">
+            
+            <div class="track-info">
+                <img src="png/cover.png" alt="Album Art" class="album-art">
+                
+                <div class="track-details">
+                    <div class="track-name">Và Thế Giới Đã Mất Đi Một Người Cô Đơn</div>
+                    <div class="artist-name">Marzuz, Changg</div>
+                </div>
+            </div>
+
+            <div class="time-control">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress" value="0" max="100">
+                <span id="duration">0:00</span>
+            </div>
+
+            <div class="controls">
+                <div class="ctrl-btn"><i class="fa-solid fa-shuffle"></i></div>
+                <div class="ctrl-btn"><i class="fa-solid fa-backward-step"></i></div>
+                <div class="play-btn" id="playPauseBtn">
+                    <i class="fa-solid fa-play" id="playIcon"></i>
+                </div>
+                <div class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></div>
+                <div class="ctrl-btn"><i class="fa-solid fa-repeat"></i></div>
+            </div>
+
+            <audio id="song">
+                <source src="music.mp3" type="audio/mpeg">
+            </audio>
+        </div>
 
     <div>
         <button id="scrollToGallery" class = "button">Xem Gallery 📸</button>
@@ -217,7 +253,12 @@
                 
      
     </main>
+        <div id="imageModal" class="modal">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
     <script src="index.js"></script>
+
 </body>
 </html>
 

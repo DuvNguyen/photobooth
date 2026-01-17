@@ -195,32 +195,51 @@ header {
 }
 
 
-.gallery {
+/* .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     padding: 10px;
     margin-top: 3rem;
+    
+} */
+
+.gallery {
+    /* Sử dụng column thay vì grid để ảnh xếp so le đẹp hơn */
+    column-count: 2; /* Chia làm 2 cột */
+    column-gap: 15px; /* Khoảng cách giữa 2 cột */
+    padding: 10px;
+    margin-top: 3rem;
 }
 
 .photo {
-    width: 100%;
-    max-width: 300px;
+    width: 100%; /* Ảnh luôn rộng 100% của cột */
+    display: block; /* Quan trọng để tránh lỗi khoảng trắng dưới ảnh */
+    margin-bottom: 15px; /* Khoảng cách giữa các ảnh theo chiều dọc */
+    break-inside: avoid; /* Ngăn không cho ảnh bị cắt đôi giữa 2 cột */
+    
     border-radius: 10px;
+    
+    
     transition: 
                 transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
                 box-shadow 0.5s ease-in-out, 
                 filter 0.5s ease-in-out,
-                opacity 0.5s ease-in-out; /* Dòng này để mờ dần */
+                opacity 0.5s ease-in-out;
     
-    /* Đổ bóng mềm hơn */
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 
     user-select: none;
-    pointer-events: auto;
+    /* pointer-events: auto; */
     -webkit-user-drag: none;
 
-    opacity: 0;           /* Ban đầu ẩn */
+    opacity: 0;
+}
+
+/* Thêm đoạn này để khi có class 'show' ảnh sẽ hiện ra đúng kiểu Masonry */
+.photo.show {
+    opacity: 1;
+    transform: translateY(0); /* Đảm bảo ảnh nằm đúng vị trí */
 }
 
 /* Khi hover vào */
@@ -300,4 +319,218 @@ header {
   opacity: 1;
 }
 
+/* =========================================
+   PHẦN MODAL (LIGHTBOX) ĐÃ SỬA CHUẨN
+   ========================================= */
+
+/* 1. Modal (nền tối) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100dvh; /* Chiều cao full màn hình */
+  background-color: rgba(0,0,0,0.95);
+  
+  /* QUAN TRỌNG: Cho phép cuộn dọc nếu ảnh dài */
+  overflow-y: auto; 
+  
+  /* Căn giữa ngang cho ảnh */
+  text-align: center;
+  
+  /* Tạo khoảng đệm để ảnh không dính sát mép khi cuộn */
+  padding: 30px 0;
+}
+
+/* --- ĐÃ XÓA ĐOẠN "Hack Flexbox" GÂY LỖI ĐỨNG HÌNH TẠI ĐÂY --- */
+
+/* 2. Ảnh bên trong Modal */
+.modal-content {
+  /* Dùng inline-block để ăn theo text-align: center của cha */
+  display: inline-block;
+  
+  /* KÍCH THƯỚC "BÉ BÉ TÍ" NHƯ BẠN MUỐN */
+  width: auto;
+  max-width: 85%;      /* Ngang tối đa 85% màn hình */
+  max-height: 85dvh;   /* Cao tối đa 70% màn hình thôi (cho nhỏ lại) */
+  
+  /* Tạo khoảng cách để khi cuộn thấy thoáng */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  
+  /* Trang trí */
+  border-radius: 12px;
+  box-shadow: none; 
+  object-fit: contain; 
+  
+  /* Hiệu ứng */
+  animation: zoom-flex 0.3s ease-out;
+}
+
+/* 3. Nút đóng (X) */
+.close-modal {
+  position: absolute; /* Hoặc fixed nếu muốn nó luôn nổi */
+  top: 15px;
+  right: 25px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.3); /* Thêm nền mờ tí cho dễ nhìn */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  line-height: 50px; /* Căn giữa chữ X */
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #ff4d6d;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 4. Hiệu ứng Zoom */
+@keyframes zoom-flex {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- ĐÃ XÓA ĐOẠN @MEDIA QUERY Ở CUỐI CÙNG VÌ NÓ LÀM LỆCH ẢNH --- */
+
+
+
+
+/* --- MUSIC PLAYER SPOTIFY STYLE --- */
+.music-player {
+    width: 95%;
+    max-width: 380px; /* Tăng chiều rộng một chút cho thoải mái */
+    margin: 20px auto;
+    padding: 20px; /* Tăng padding */
+    background: rgba(255, 255, 255, 0.6); /* Nền sáng hơn xíu */
+    backdrop-filter: blur(10px);
+    border-radius: 25px; /* Bo tròn nhiều hơn */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Khoảng cách giữa các phần */
+}
+
+/* 1. STYLE CHO THÔNG TIN BÀI HÁT */
+.track-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Ảnh bìa album */
+.album-art {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px; /* Bo góc ảnh */
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Bóng đổ nhẹ cho ảnh */
+}
+
+/* Khu vực tên bài hát */
+.track-details {
+    margin-left: 15px; /* Cách ảnh bìa ra */
+    flex: 1; /* Chiếm hết không gian còn lại */
+    overflow: hidden; /* Ẩn phần chữ thừa nếu quá dài */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Tên bài hát */
+.track-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 4px;
+    white-space: nowrap; /* Không xuống dòng */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Thêm dấu ... nếu tên quá dài */
+}
+
+/* Tên nghệ sĩ */
+.artist-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: #666; /* Màu xám nhạt hơn */
+}
+
+
+/* 2. STYLE CHO THANH THỜI GIAN (Chỉnh lại chút cho gọn) */
+.time-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 5px; /* Giảm margin dưới */
+}
+
+#progress {
+    width: 75%; /* Thanh dài hơn xíu */
+    -webkit-appearance: none;
+    height: 4px;
+    background: #ddd; /* Màu nền thanh xám nhạt */
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #222; /* Nút màu đen đậm */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+/* 3. STYLE CHO NÚT BẤM (Giữ nguyên vẻ đẹp cũ) */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 10px;
+}
+
+.ctrl-btn {
+    font-size: 18px;
+    color: #444;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.ctrl-btn:hover { color: #ff4d6d; }
+
+.play-btn {
+    width: 55px; /* Nhỏ hơn xíu cho cân đối */
+    height: 55px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.play-btn:active {
+    transform: scale(0.9);
+}
 /*duvnguyen*/
