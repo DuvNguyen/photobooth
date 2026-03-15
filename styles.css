@@ -103,7 +103,7 @@ header {
     color: #ff4d6d;
     border: 1px solid #ffb3c6;
     padding: 8px 16px;
-    margin: 0 4px;
+    margin: 5px 4px;
     border-radius: 12px;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
@@ -258,7 +258,7 @@ footer {
     font-family: 'Arial', sans-serif; /* Font đơn giản hiện đại */
     font-size: 13px; /* Kích thước nhỏ nhắn */
     
-    /* MÀU XÁM GIỐNG TÊN CA SĨ */
+    
     color: #66C; 
     
     font-weight: 600; /* Hơi đậm nhẹ cho dễ đọc */
