@@ -171,29 +171,64 @@ header {
     gap: 15px; /* Khoảng cách giữa các ảnh */
     padding: 10px;
     margin-top: 1rem;
+    align-items: flex-start;
 }
 
 .photo {
     /* Tính toán: 50% chiều rộng trừ đi một nửa khoảng cách gap */
     width: calc(50% - 8px); 
-    
+
     display: block;
     margin-bottom: 0; /* Flexbox dùng gap nên không cần margin dưới */
     object-fit: cover; /* Giúp ảnh không bị méo */
-    
+    aspect-ratio: 859 / 2560;
+    min-height: 220px;
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+
     /* Trang trí giữ nguyên */
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0; 
+    opacity: 1;
+    transform: translateY(8px);
 }
 
-.photo.show { opacity: 1; transform: translateY(0); }
+.photo.show { transform: translateY(0); }
 .photo:hover { transform: scale(1.02); box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); filter: brightness(1.03); }
+
+.photo.is-loading,
+.bigphoto.is-loading {
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.55) 50%,
+        rgba(255, 255, 255, 0.22) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+.photo.is-ready,
+.bigphoto.is-ready {
+    background-image: none;
+}
 
 /* --- GALLERY BIG --- */
 .gallery1 { display: grid; gap: 5px; margin-left: 1%; padding-top: 30px }
-.bigphoto { width: 100%; border-radius: 10px; margin-top: 1rem; margin-bottom:15px ;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); transition: transform 0.5s; }
+.bigphoto {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: block;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom:15px ;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+}
 .bigphoto:hover { transform: scale(1.02); box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4); filter: brightness(1.03); }
 
 /* --- MODAL --- */
@@ -244,6 +279,11 @@ header {
 @keyframes zoom-flex {
     from { transform: scale(0.6); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes skeleton-loading {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
 }
 
 

@@ -107,6 +107,31 @@ function checkTextOverflow() {
 }
 window.addEventListener('resize', checkTextOverflow);
 
+// Giữ chỗ trước cho ảnh lazy-load để layout không bị nhảy
+function setupImagePlaceholders() {
+    const lazyImages = document.querySelectorAll('.photo, .bigphoto');
+
+    lazyImages.forEach((media) => {
+        if (media.tagName !== 'IMG') return;
+
+        const markReady = () => {
+            media.classList.remove('is-loading');
+            media.classList.add('is-ready');
+        };
+
+        media.classList.add('is-loading');
+
+        if (media.complete) {
+            markReady();
+        } else {
+            media.addEventListener('load', markReady, { once: true });
+            media.addEventListener('error', markReady, { once: true });
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setupImagePlaceholders);
+
 // 6. PHÂN TRANG GALLERY (MASONRY) - CÁCH 1: FLEXBOX
 document.addEventListener('DOMContentLoaded', () => {
     const photos = document.querySelectorAll('#gallery .photo');
